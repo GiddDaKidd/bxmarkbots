@@ -6,8 +6,8 @@ require_relative 'igcredsz' # Pulls in login credentials from credentials.rb
 
 username = $username
 password = $password
-like_counter = 0
-num_of_rounds = 0
+like_counter = 750
+num_of_rounds = 5
 MAX_LIKES = 1500
 
 # Open Browser, Navigate to Login page
@@ -15,7 +15,7 @@ browser = Watir::Browser.new :chrome, switches: ['--incognito']
 browser.goto "instagram.com/accounts/login/"
 
 # Navigate to Username and Password fields, inject info
-puts "Logging in..."
+ap "Logging in..."
 browser.text_field(:name => "username").set "#{username}"
 browser.text_field(:name => "password").set "#{password}"
 
@@ -30,7 +30,6 @@ sleep(1)
 puts "Bitch ass modal got out of our way ;) #itslit"
 
 
-
 # Continuous loop to break upon reaching the max likes
 loop do
   # Scroll to bottom of window 3 times to load more results (20 per page)
@@ -40,8 +39,8 @@ loop do
   end
 
   # Call all unliked like buttons on page and click each one.
-  if browser.span(:class => ["_8scx2 coreSpriteHeartOpen"]).exists?
-    browser.spans(:class => ["_8scx2 coreSpriteHeartFull"]).each { |val|
+  if browser.span(:class => ["coreSpriteHeartOpen"]).exists?
+    browser.spans(:class => ["coreSpriteHeartFull"]).each { |val|
       val.click
       like_counter += 1
     }
