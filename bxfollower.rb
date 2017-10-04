@@ -6,7 +6,7 @@ require_relative 'igcredsz' # Pulls in login credentials from credentials.rb
 
 username = $username
 password = $password
-users = ["josephineskriver", "theweeknd", "kendalljenner", "karliekloss"]
+users = ['instagram', 'selenagomez', 'arianagrande', 'taylorswift', 'beyonce', 'kimkardashian', 'cristiano', 'kyliejenner', 'justinbieber', 'kendalljenner', 'nickiminaj', 'natgeo', 'neymarjr', 'nike', 'leomessi','khloekardashian', 'mileycyrus', 'katyperry', 'jlo', 'ddlovato', 'kourtneykardash', 'victoriasecret', 'badgalriri', 'fcbarcelona', 'realmadrid', 'theellenshow', 'justintimberlake', 'zendaya' 'caradelevingne', '9gag', 'chrisbrownofficial', 'vindiesel', 'champagnepapi', 'davidbeckham', 'shakira', 'gigihadid', 'emmawatson', 'jamesrodiguez10', 'kingjames', 'garethbale11', 'nikefootball', 'adele', 'zacefron', 'vanessahudgens', 'ladygaga', 'maluma', 'nba', 'nasa', 'rondaldinho', 'luissuarez9', 'zayn', 'shawnmendes', 'adidasfootball', 'brumarquezine', 'hm', 'harrystyles','chanelofficial', 'ayutingting92', 'letthelordbewithyou', 'niallhoran', 'anitta', 'hudabeauty', 'camerondallas', 'adidasoriginals', 'marinaruybarbosa', 'lucyhale', 'karimbenzema', 'princessyahrini', 'zara', 'nickyjampr', 'onedirection', 'andresiniesta8', 'raffinagita1717', 'krisjenner', 'manchesterunited', 'natgeotravel', 'marcelottwelve', 'deepikapadukone', 'snoopdogg', 'davidluiz_4', 'kalbiminrozeti', 'priyankachopra', 'ashleybenson', 'shaym', 'lelepons', 'prillylatuconsina96','louisvuitton','britneyspears', 'sr4official', 'jbalvin', 'laudyacynthiabella', 'ciara', 'stephencurry30', 'instagrambrasil']
 follow_counter = 0
 unfollow_counter = 0
 MAX_UNFOLLOWS = 200
@@ -22,8 +22,8 @@ browser.text_field(:name => "username").set "#{username}"
 browser.text_field(:name => "password").set "#{password}"
 
 # Click Login Button
-browser.button(:class => '_ah57t _84y62 _i46jh _rmr7s').click
-sleep(2)
+browser.button(:class => ["_qv64e", "_gexxb", "_4tgw8", "_njrw0"]).wait_until_present.click
+sleep(1)
 puts "We're in #hackerman"
 
 # Continuous loop to run until you've unfollowed the max people for the day
@@ -33,13 +33,13 @@ loop do
     browser.goto "instagram.com/#{val}/"
 
     # If not following then follow
-    if browser.button(:class => '_ah57t _84y62 _frcv2 _rmr7s').exists?
+    if browser.button(:class => ["_qv64e", "_gexxb", "_r9b8f", "_njrw0"]).exists?
       ap "Following #{val}"
-      browser.button(:class => '_ah57t _84y62 _frcv2 _rmr7s').click
+      browser.button(:class => ["_qv64e", "_gexxb", "_r9b8f", "_njrw0"]).wait_until_present.click
       follow_counter += 1
-    elsif browser.button(:class => '_ah57t _6y2ah _frcv2 _rmr7s').exists?
+    elsif browser.button(:class => ["_t78yp", "_r9b8f", "_njrw0"]).exists?
       ap "Unfollowing #{val}"
-      browser.button(:class => '_ah57t _6y2ah _frcv2 _rmr7s').click
+      browser.button(:class => ["_t78yp", "_r9b8f", "_njrw0"]).wait_until_present.click
       unfollow_counter += 1
     end
     sleep(1.0/2.0) # Sleep half a second to not get tripped up when un/following many users at once
@@ -56,4 +56,3 @@ ap "Followed #{follow_counter} users and unfollowed #{unfollow_counter} in #{((T
 Pry.start(binding)
 
 # Top 100 users on Instagram
-# users = ['instagram', 'selenagomez', 'arianagrande', 'taylorswift', 'beyonce', 'kimkardashian', 'cristiano', 'kyliejenner', 'justinbieber', 'kendalljenner', 'nickiminaj', 'natgeo', 'neymarjr', 'nike', 'leomessi','khloekardashian', 'mileycyrus', 'katyperry', 'jlo', 'ddlovato', 'kourtneykardash', 'victoriasecret', 'badgalriri', 'fcbarcelona', 'realmadrid', 'theellenshow', 'justintimberlake', 'zendaya' 'caradelevingne', '9gag', 'chrisbrownofficial', 'vindiesel', 'champagnepapi', 'davidbeckham', 'shakira', 'gigihadid', 'emmawatson', 'jamesrodiguez10', 'kingjames', 'garethbale11', 'nikefootball', 'adele', 'zacefron', 'vanessahudgens', 'ladygaga', 'maluma', 'nba', 'nasa', 'rondaldinho', 'luissuarez9', 'zayn', 'shawnmendes', 'adidasfootball', 'brumarquezine', 'hm', 'harrystyles','chanelofficial', 'ayutingting92', 'letthelordbewithyou', 'niallhoran', 'anitta', 'hudabeauty', 'camerondallas', 'adidasoriginals', 'marinaruybarbosa', 'lucyhale', 'karimbenzema', 'princessyahrini', 'zara', 'nickyjampr', 'onedirection', 'andresiniesta8', 'raffinagita1717', 'krisjenner', 'manchesterunited', 'natgeotravel', 'marcelottwelve', 'deepikapadukone', 'snoopdogg', 'davidluiz_4', 'kalbiminrozeti', 'priyankachopra', 'ashleybenson', 'shaym', 'lelepons', 'prillylatuconsina96','louisvuitton','britneyspears', 'sr4official', 'jbalvin', 'laudyacynthiabella', 'ciara', 'stephencurry30', 'instagrambrasil']

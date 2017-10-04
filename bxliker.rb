@@ -20,32 +20,39 @@ browser.text_field(:name => "username").set "#{username}"
 browser.text_field(:name => "password").set "#{password}"
 
 # Click Login Button
-browser.button(:class => '_ah57t _84y62 _i46jh _rmr7s').click
-sleep(2)
-puts "We're in #DatCrawlLifeDoe"
+browser.button(:class => ["_qv64e", "_gexxb", "_4tgw8", "_njrw0"]).click
+sleep(1)
+puts "We're in #DaWebCrawlLifeMayne"
+
+# Close modal window
+browser.button(:class => ["_dbnr9"]).click
+sleep(1)
+puts "Bitch ass modal got out of our way ;) #itslit"
+
+
 
 # Continuous loop to break upon reaching the max likes
 loop do
   # Scroll to bottom of window 3 times to load more results (20 per page)
   3.times do |i|
     browser.driver.execute_script("window.scrollBy(0,document.body.scrollHeight)")
-    sleep(1)
+    sleep(2)
   end
 
   # Call all unliked like buttons on page and click each one.
-  if browser.span(:class => "coreSpriteHeartOpen").exists?
-    browser.spans(:class => "coreSpriteHeartOpen").each { |val|
+  if browser.span(:class => ["_8scx2 coreSpriteHeartOpen"]).exists?
+    browser.spans(:class => ["_8scx2 coreSpriteHeartFull"]).each { |val|
       val.click
       like_counter += 1
     }
     ap "Photos liked: #{like_counter}"
   else
-    ap "No media to like rn, yo. Sorry homie, we tried."
+    ap "No media to like at the moment, yo. Sorry pimpin, we tried."
   end
   num_of_rounds += 1
   puts "--------- #{like_counter / num_of_rounds} likes per round (on average) ----------"
   break if like_counter >= MAX_LIKES
-  sleep(30) # Return to top of loop after this many seconds to check for new photos
+  sleep(60) # Return to top of loop after this many seconds to check for new photos
 end
 
 # Leave this in to use the REPL at end of program
